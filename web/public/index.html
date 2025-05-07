@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Catálogo interactivo de productos con filtros y búsqueda">
+  <title>Catálogo de Productos | Tienda Online</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <h1 class="site-title">Catálogo de Productos</h1>
+      
+      
+
+      <div class="filtros">
+        <input type="search" id="buscador" placeholder="Buscar productos...">
+        <select id="categoria">
+          <!-- Se llenará dinámicamente -->
+        </select>
+      </div>
+
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <section id="productos" class="product-grid" aria-label="Listado de productos">
+        <!-- Los productos se cargarán dinámicamente aquí -->
+        <div class="loading-indicator">
+          <i class="fas fa-spinner fa-spin"></i> Cargando productos...
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <p>&copy; <span id="current-year"></span> Tienda Online. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Modal para vista detallada de producto -->
+  <div id="product-modal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+      <button class="close-modal" aria-label="Cerrar modal">&times;</button>
+      <div class="modal-body">
+        <!-- Contenido del modal se cargará dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app1.js" defer></script>
+</body>
+</html>
