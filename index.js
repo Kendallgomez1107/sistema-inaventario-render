@@ -17,6 +17,11 @@ const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('¡Servidor funcionando correctamente!');
+});
+
 app.use('/api', authRoutes);
 app.use('/api/proveedores', proveedoresRouter);
 app.use('/api/categorias', categoriasRouter);
