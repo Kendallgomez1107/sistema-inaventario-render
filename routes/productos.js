@@ -13,6 +13,24 @@ router.get('/', async (req, res) => {
   }
 });
 
+// ✅ Obtener un solo producto por ID
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await pool.query('SELECT * FROM productos WHERE id_producto = $1', [id]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Producto no encontrado' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Error al obtener producto:', error);
+    res.status(500).json({ error: 'Error al obtener producto' });
+  }
+});
+
 // Crear producto
 router.post('/', async (req, res) => {
   try {
