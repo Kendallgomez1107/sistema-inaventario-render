@@ -19,11 +19,11 @@ Esta es una API RESTful desarrollada para gestionar un sistema de inventario. Pe
 
 | Método | Endpoint                     | Descripción                         |
 |--------|------------------------------|-------------------------------------|
-| GET    | `/productos`                 | Obtener todos los productos         |
-| GET    | `/productos/:id`             | Obtener un producto por ID          |
-| POST   | `/productos`                 | Crear un nuevo producto             |
-| PUT    | `/productos/:id`             | Actualizar un producto existente    |
-| DELETE | `/productos/:id`             | Eliminar un producto                |
+| GET    | `/api/productos`             | Obtener todos los productos         |
+| GET    | `/api//productos/:id`        | Obtener un producto por ID          |
+| POST   | `/api//productos`            | Crear un nuevo producto             |
+| PUT    | `/api//productos/:id`        | Actualizar un producto existente    |
+| DELETE | `/api//productos/:id`        | Eliminar un producto                |
 
 ---
 
@@ -31,11 +31,11 @@ Esta es una API RESTful desarrollada para gestionar un sistema de inventario. Pe
 
 | Método | Endpoint                     | Descripción                         |
 |--------|------------------------------|-------------------------------------|
-| GET    | `/categorias`                | Obtener todas las categorías        |
-| GET    | `/categorias/:id`            | Obtener una categoría por ID        |
-| POST   | `/categorias`                | Crear una nueva categoría           |
-| PUT    | `/categorias/:id`            | Actualizar una categoría existente  |
-| DELETE | `/categorias/:id`            | Eliminar una categoría              |
+| GET    | `/api/categorias`            | Obtener todas las categorías        |
+| GET    | `/api//categorias/:id`       | Obtener una categoría por ID        |
+| POST   | `/api//categorias`           | Crear una nueva categoría           |
+| PUT    | `/api//categorias/:id`       | Actualizar una categoría existente  |
+| DELETE | `/api//categorias/:id`       | Eliminar una categoría              |
 
 ---
 
@@ -43,11 +43,11 @@ Esta es una API RESTful desarrollada para gestionar un sistema de inventario. Pe
 
 | Método | Endpoint                     | Descripción                         |
 |--------|------------------------------|-------------------------------------|
-| GET    | `/proveedores`               | Obtener todos los proveedores       |
-| GET    | `/proveedores/:id`           | Obtener un proveedor por ID         |
-| POST   | `/proveedores`               | Crear un nuevo proveedor            |
-| PUT    | `/proveedores/:id`           | Actualizar un proveedor existente   |
-| DELETE | `/proveedores/:id`           | Eliminar un proveedor               |
+| GET    | `/api/proveedores`           | Obtener todos los proveedores       |
+| GET    | `/api//proveedores/:id`      | Obtener un proveedor por ID         |
+| POST   | `/api//proveedores`          | Crear un nuevo proveedor            |
+| PUT    | `/api//proveedores/:id`      | Actualizar un proveedor existente   |
+| DELETE | `/api//proveedores/:id`      | Eliminar un proveedor               |
 
 ---
 
@@ -55,11 +55,11 @@ Esta es una API RESTful desarrollada para gestionar un sistema de inventario. Pe
 
 | Método | Endpoint                     | Descripción                         |
 |--------|------------------------------|-------------------------------------|
-| GET    | `/usuarios`                  | Obtener todos los usuarios          |
-| GET    | `/usuarios/:id`              | Obtener un usuario por ID           |
-| POST   | `/usuarios`                  | Crear un nuevo usuario              |
-| PUT    | `/usuarios/:id`              | Actualizar un usuario existente     |
-| DELETE | `/usuarios/:id`              | Eliminar un usuario                 |
+| GET    | `/api//usuarios`             | Obtener todos los usuarios          |
+| GET    | `/api//usuarios/:id`         | Obtener un usuario por ID           |
+| POST   | `/api//usuarios`             | Crear un nuevo usuario              |
+| PUT    | `/api//usuarios/:id`         | Actualizar un usuario existente     |
+| DELETE | /api/`/usuarios/:id`         | Eliminar un usuario                 |
 
 ---
 
