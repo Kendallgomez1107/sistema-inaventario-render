@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Configuración global
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = 'https://sistema-inaventario-render.onrender.com/api';
 const DEFAULT_HEADERS = {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
