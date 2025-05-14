@@ -13,6 +13,25 @@ router.get('/', async (req, res) => {
     res.status(500).send('Error del servidor');
   }
 });
+// Obtener un proveedor por su ID
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      'SELECT * FROM proveedores WHERE id_proveedor = $1',
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Proveedor no encontrado' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Error del servidor');
+  }
+});
 
 // Crear un nuevo proveedor
 router.post('/', async (req, res) => {
