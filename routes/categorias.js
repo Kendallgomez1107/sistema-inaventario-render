@@ -14,6 +14,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Obtener una categoría por su ID
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      'SELECT * FROM categorias WHERE id_categoria = $1',
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Categoría no encontrada' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Error del servidor');
+  }
+});
+
 // Crear una nueva categoría
 router.post('/', async (req, res) => {
   const { nombre, descripcion } = req.body;
