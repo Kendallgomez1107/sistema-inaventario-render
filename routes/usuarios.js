@@ -48,21 +48,22 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Actualizar usuario con validación y normalización de rol
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   let { nombre, email, contraseña, rol } = req.body;
 
-  // Normalizar rol: quitar espacios y pasar a minúsculas
+  // Validar que rol sea string y normalizar
   if (typeof rol === 'string') {
     rol = rol.trim().toLowerCase();
   } else {
     return res.status(400).json({ error: 'Rol inválido o no proporcionado' });
   }
 
-  // Validar rol permitido
+  // Validar que rol esté permitido
   const rolesPermitidos = ['admin', 'editor', 'visor'];
   if (!rolesPermitidos.includes(rol)) {
-    return res.status(400).json({ error: 'Rol inválido' });
+    return res.status(400).json({ error: 'Rol inválido. Valores permitidos: admin, editor, visor' });
   }
 
   try {
@@ -76,6 +77,7 @@ router.put('/:id', async (req, res) => {
     res.status(500).send('Error del servidor');
   }
 });
+
 
 // Eliminar usuario
 router.delete('/:id', async (req, res) => {
