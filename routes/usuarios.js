@@ -1,4 +1,3 @@
-//routes/usuarios.js
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
@@ -13,6 +12,7 @@ router.get('/', async (req, res) => {
     res.status(500).send('Error del servidor');
   }
 });
+
 // Obtener un usuario por su ID
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
@@ -33,18 +33,17 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-
 // Crear un nuevo usuario
 router.post('/', async (req, res) => {
-  const { nombre, email, password, rol } = req.body;
+  const { nombre, email, contraseña, rol } = req.body; // ✅ corregido aquí
   try {
     const result = await pool.query(
-      'INSERT INTO usuarios (nombre, email,  contraseña, rol) VALUES ($1, $2, $3, $4) RETURNING *',
-      [nombre, email,  contraseña, rol]
+      'INSERT INTO usuarios (nombre, email, contraseña, rol) VALUES ($1, $2, $3, $4) RETURNING *',
+      [nombre, email, contraseña, rol]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
-    console.error(err.message);
+    console.error('Error al crear usuario:', err.stack);
     res.status(500).send('Error del servidor');
   }
 });
@@ -52,15 +51,15 @@ router.post('/', async (req, res) => {
 // Actualizar usuario
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { nombre, email, password, rol } = req.body;
+  const { nombre, email, contraseña, rol } = req.body; // ✅ corregido aquí también
   try {
     const result = await pool.query(
-      'UPDATE usuarios SET nombre = $1, email = $2,  contraseña = $3, rol = $4 WHERE id_usuario = $5 RETURNING *',
-      [nombre, email,  contraseña, rol, id]
+      'UPDATE usuarios SET nombre = $1, email = $2, contraseña = $3, rol = $4 WHERE id_usuario = $5 RETURNING *',
+      [nombre, email, contraseña, rol, id]
     );
     res.json(result.rows[0]);
   } catch (err) {
-    console.error(err.message);
+    console.error('Error al actualizar usuario:', err.stack);
     res.status(500).send('Error del servidor');
   }
 });
@@ -69,7 +68,10 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const result = await pool.query('DELETE FROM usuarios WHERE id_usuario = $1 RETURNING *', [id]);
+    const result = await pool.query(
+      'DELETE FROM usuarios WHERE id_usuario = $1 RETURNING *',
+      [id]
+    );
     res.json(result.rows[0]);
   } catch (err) {
     console.error(err.message);
