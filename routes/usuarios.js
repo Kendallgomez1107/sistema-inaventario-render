@@ -48,10 +48,23 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Actualizar usuario
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { nombre, email, contraseña, rol } = req.body; // ✅ corregido aquí también
+  let { nombre, email, contraseña, rol } = req.body;
+
+  // Normalizar rol: quitar espacios y pasar a minúsculas
+  if (typeof rol === 'string') {
+    rol = rol.trim().toLowerCase();
+  } else {
+    return res.status(400).json({ error: 'Rol inválido o no proporcionado' });
+  }
+
+  // Validar rol permitido
+  const rolesPermitidos = ['admin', 'editor', 'visor'];
+  if (!rolesPermitidos.includes(rol)) {
+    return res.status(400).json({ error: 'Rol inválido' });
+  }
+
   try {
     const result = await pool.query(
       'UPDATE usuarios SET nombre = $1, email = $2, contraseña = $3, rol = $4 WHERE id_usuario = $5 RETURNING *',
