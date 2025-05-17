@@ -63,7 +63,7 @@ router.put('/:id', async (req, res) => {
   // Validar que rol esté permitido
   const rolesPermitidos = ['admin', 'editor', 'visor'];
   if (!rolesPermitidos.includes(rol)) {
-    return res.status(400).json({ error: 'Rol inválido. Valores permitidos: admin, editor, visor' });
+    return res.status(400).json({ error: 'Rol inválido. Valores permitidos: admin, empleado, gerente' });
   }
 
   try {
